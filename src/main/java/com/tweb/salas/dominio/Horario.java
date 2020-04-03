@@ -151,6 +151,6 @@ public class Horario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Horario [id=" + id + ", hora inicio=" + hinicio + ", hora final=" + hfinal + "]";
+		return "Horario Sala [id=" + id + ", hora inicio=" + hinicio + ", hora final=" + hfinal + "]";
 	}
 }
