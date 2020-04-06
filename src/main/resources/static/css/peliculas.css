@@ -1,0 +1,8 @@
+.periko_img .card {
+	height: 100%;
+}
+
+.periko_img .card img {
+	height: 400px;
+	object-fit: cover;
+}
