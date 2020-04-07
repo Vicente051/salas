@@ -39,6 +39,9 @@ public class SalaCRUDControlador {
 	@Autowired
 	private HorariosServicio horariosServicio;
 	
+	/**Variable para pasar el nombre de la pestaña*/
+	String nombre = "Salas";
+	
 	/**
 	 * Método GET que añade o crea una Sala en el repositorio
 	 * @param model objeto de la Clase Model para añadir objetos creados
@@ -51,6 +54,7 @@ public class SalaCRUDControlador {
 		model.addAttribute("horarios", horariosServicio.listaHorarios());
 		model.addAttribute("salas", salasServicio.listaSalas());
 		model.addAttribute("sala", new Sala());
+		model.addAttribute("nombrePestana", nombre);
 		return "agregarSala";
 	}
 	
@@ -60,7 +64,7 @@ public class SalaCRUDControlador {
 	 * @param model objeto de la Clase Model para añadir objetos creados
 	 * @return String que busca la página correspondiente
 	 */
-	@RequestMapping("/editarSala/{id}")
+	@RequestMapping("/editarSala{id}")
 	public String verSala (@PathVariable("id") Integer id, Model model) {
 		
 		// Buscamos la Sala que coincida con el id, recibido como parámetro del JSP
@@ -84,7 +88,7 @@ public class SalaCRUDControlador {
 		model.addAttribute("horarios", lista_horarios_faltan);		
 		model.addAttribute("medios_tecnicos", lista_medios_faltan);
 		model.addAttribute("sala", sala);		
-	
+		model.addAttribute("nombrePestana", nombre);
 		return "/admin/agregarSala";
 	}
 	
@@ -94,13 +98,14 @@ public class SalaCRUDControlador {
 	 * @param model objeto de la Clase Model para añadir objetos creados
 	 * @return String que busca la página correspondiente
 	 */	
-	@RequestMapping("/borrarSala/{id}")
+	@RequestMapping("/borrarSala{id}")
 	public String borrarSala (@PathVariable("id") Integer id, Model model) {		
 		// Buscamos el objeto sala que coincida con el parámetro id introducido
 		// Borramos el objeto encontrado y mostramos el listado con el objeto borrado
 		Sala sala=salasServicio.buscarSala(id);
 		salasServicio.borrarSala(sala);
 		model.addAttribute("salas", salasServicio.listaSalas());
+		model.addAttribute("nombrePestana", nombre);
 		return "agregarSala";
 	}
 	
@@ -117,12 +122,14 @@ public class SalaCRUDControlador {
 		// Comprobamos si existe algún error de validación y redirigimos al formulario		
 		if(bindingResult.hasErrors()) {			
 			System.out.println("Ha pasado algo");
-			model.addAttribute("errores", bindingResult);			
+			model.addAttribute("errores", bindingResult);
+			model.addAttribute("nombrePestana", nombre);
 			return "redirect:/admin/agregarSala";
 		}
 		else {
 			// Guardamos el objeto en el repositorio correspondiente			
 			salasServicio.guardarSala(sala);
+			model.addAttribute("nombrePestana", nombre);
 			return "redirect:/salas";			
 		}		
 	}

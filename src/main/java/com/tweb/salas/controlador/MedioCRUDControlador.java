@@ -30,6 +30,9 @@ public class MedioCRUDControlador {
 	@Autowired
 	private MediosServicio mediosServicio;
 	
+	/**Variable para pasar el nombre de la pestaña*/
+	String nombre = "Medios técnicos";
+	
 	/**
 	 * Método GET que añade o crea un Medio Técnico en el repositorio
 	 * @param model objeto de la Clase Model para añadir objetos creados
@@ -41,6 +44,7 @@ public class MedioCRUDControlador {
 		model.addAttribute("medios_tecnicos", mediosServicio.listaMedios());
 		model.addAttribute("salas", salasServicio.listaSalas());
 		model.addAttribute("medio", new Medio_Tecnico());
+		model.addAttribute("nombrePestana", nombre);
 		return "agregarMedio";
 	}
 	
@@ -50,7 +54,7 @@ public class MedioCRUDControlador {
 	 * @param model objeto de la Clase Model para añadir objetos creados
 	 * @return String que busca la página correspondiente
 	 */
-	@RequestMapping("/editarMedio/{id}")
+	@RequestMapping("/editarMedio{id}")
 	public String verMedio (@PathVariable("id") Integer id, Model model) {		
 		// Buscamos el Medio Técnico que coincida con el id, recibido como parámetro del JSP
 		Medio_Tecnico medio = mediosServicio.buscarMedio(id);
@@ -59,7 +63,7 @@ public class MedioCRUDControlador {
 	    
 	    // Añadimos las listas y el objeto Medio Técnico para editarlo
 		model.addAttribute("medio", medio);		
-	
+		model.addAttribute("nombrePestana", nombre);
 		return "/admin/agregarMedio";
 	}
 	
@@ -69,7 +73,7 @@ public class MedioCRUDControlador {
 	 * @param model objeto de la Clase Model para añadir objetos creados
 	 * @return String que busca la página correspondiente
 	 */	
-	@RequestMapping("/borrarMedio/{id}")
+	@RequestMapping("/borrarMedio{id}")
 	public String borrarMedio (@PathVariable("id") Integer id, Model model) {
 		// Buscamos el objeto medio que coincida con el parámetro id introducido
 		// Borramos el objeto encontrado y mostramos el listado con el objeto borrado
@@ -77,6 +81,7 @@ public class MedioCRUDControlador {
 		mediosServicio.borrarMedio(medio);
 	
 		model.addAttribute("medios", mediosServicio.listaMedios());
+		model.addAttribute("nombrePestana", nombre);
 		return "redirect:/admin/medios";
 	}
 	
@@ -90,6 +95,7 @@ public class MedioCRUDControlador {
 	@PostMapping("/guardarMedio")
 	public String guardarMedio (@Valid Medio_Tecnico medio, BindingResult bindingResult, Model model) {		
 		
+		model.addAttribute("nombrePestana", nombre);
 		// Comprobamos si existe algún error de validación y redirigimos al formulario		
 		if(bindingResult.hasErrors()) {				
 			return "/admin/agregarMedio";
