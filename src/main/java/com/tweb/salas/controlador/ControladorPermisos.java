@@ -13,13 +13,13 @@ public class ControladorPermisos   {
     @RequestMapping("/user")
     @PreAuthorize("hasRole('ROLE_USER')")
     public String user() {
-        return "testjuser";
+        return "user/testjuser";
     }
 
     @RequestMapping("/jefeProyecto")
     @PreAuthorize("hasRole('JEFE')")
     public String jefeProyecto() {
-        return "testjefe";
+        return "jefeProyecto/testjefe";
     }
 
 

@@ -25,11 +25,12 @@ public class DbInit implements CommandLineRunner {
         this.userRepository.deleteAll();
 
         // Crear users inciales proyecto
-        User dan = new User("manu",passwordEncoder.encode("manu123"),"USER","");
-        User admin = new User("admin",passwordEncoder.encode("admin123"),"ADMIN","TESTJEFE");
-        User manager = new User("manager",passwordEncoder.encode("manager123"),"JEFE","TESTJEFE");
+        User dan = new User("dan",passwordEncoder.encode("dan123"),"USER","");
+        User admin = new User("admin",passwordEncoder.encode("admin123"),"ADMIN","ACCESS_TEST1,ACCESS_TEST2");
+        User manager = new User("manager",passwordEncoder.encode("manager123"),"MANAGER","ACCESS_TEST1");
 
         List<User> users = Arrays.asList(dan,admin,manager);
+
 
         // Save to db
         this.userRepository.saveAll(users);
