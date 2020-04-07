@@ -4,7 +4,7 @@
 <div class="container">
 
 	<form:form>
-	<div class="text-center pt-4" style="margin-bottom: 15px;">
+		<div class="text-center pt-4" style="margin-bottom: 15px;">
 			<a href="/admin/agregarSala" class="btn btn-primary">Agregar Sala</a>
 			<a href="/admin/medios" class="btn btn-primary">Medios</a>
 			<a href="/admin/horarios" class="btn btn-primary">Horarios</a>
@@ -59,9 +59,9 @@
 					    	<p class="card-text" style="margin-left: 15px; font-size: 90%; line-height: 10px;">-De ${horario.hinicio} a ${horario.hfinal}<br/></p>
 					    </c:forEach>
 					    
-					    <div class="text-center pt-4" style="bottom 0px;">
-							<a  class="btn btn-primary" href="admin/editarSala${sala.id}">Editar sala</a>
-							<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" href="/admin/borrarSala${sala.id}">Borrar</a>
+					    <div class="text-center pt-4">
+							<a class="btn btn-primary" href="admin/editarSala${sala.id}">Editar sala</a>
+							<a class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" href="/admin/borrarSala${sala.id}">Borrar</a>
 						</div>
 					  </div>
 					</div>

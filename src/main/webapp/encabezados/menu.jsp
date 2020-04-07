@@ -32,7 +32,7 @@
 		                   <a class="nav-link" href="/perfil">Mi perfil</a>
 		               </li>
 		               <li class="nav-item">
-		                   <a class="nav-link" href="/admin">Administración</a>
+		                   <a class="nav-link" href="/">Hueco disponible</a>
 		               </li>
 		               <li class="nav-item">
 		                   <a class="nav-link" href="/registro">Registrarse</a>

@@ -26,14 +26,21 @@ public class VistaControlador {
 	public String eventos(Model model) {
 		nombre = "Enevtos";
 		model.addAttribute("nombrePestana", nombre);
-		return "/secciones/eventos";
+		return "/eventos";
 	}
 	
 	@RequestMapping("/addEvento")
 	public String addEvento(Model model) {
 		nombre = "Eventos";
 		model.addAttribute("nombrePestana", nombre);
-		return "addEvento";
+		return "/manager/editEvento";
+	}
+	
+	@RequestMapping("/doodle")
+	public String addDoodle(Model model) {
+		nombre = "Eventos";
+		model.addAttribute("nombrePestana", nombre);
+		return "/user/doodle";
 	}
 
 	@RequestMapping("/añadirEvento")
@@ -47,7 +54,7 @@ public class VistaControlador {
 	public String editEvento(Model model) {
 		nombre = "Eventos";
 		model.addAttribute("nombrePestana", nombre);
-		return "editEvento";
+		return "/manager/editEvento";
 	}
 	
 	@RequestMapping("/guardarEvento")
@@ -61,21 +68,14 @@ public class VistaControlador {
 	public String vivo(Model model) {
 		nombre = "En vivo";
 		model.addAttribute("nombrePestana", nombre);
-		return "/secciones/vivo";
+		return "/vivo";
 	}
 	
 	@RequestMapping("/perfil")
 	public String perfil(Model model) {
 		nombre = "Perfil";
 		model.addAttribute("nombrePestana", nombre);
-		return "/secciones/perfil";
-	}
-	
-	@RequestMapping("/admin")
-	public String admin(Model model) {
-		nombre = "Administración";
-		model.addAttribute("nombrePestana", nombre);
-		return "/secciones/admin";
+		return "/perfil";
 	}
 	
 	
@@ -83,12 +83,8 @@ public class VistaControlador {
 	public String registro(Model model) {
 		nombre = "Registro";
 		model.addAttribute("nombrePestana", nombre);
-		return "/secciones/registro";
+		return "/registro";
 	}
-	
-	
-	
-	
 	
 	@RequestMapping("/añadirPerfil")
 	public String añadirPerfil(Model model) {
