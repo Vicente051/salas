@@ -1,7 +1,8 @@
-<%@ include file="/encabezados/header.jsp"%>
+<jsp:directive.include file="/encabezados/cabecera.jsp" />
+<jsp:directive.include file="/encabezados/menu.jsp" />
 
-<img src="/img/reunion.jpg" class="d-inline-block align-top" alt="">
+<!-- <h1>${ruta}</h1> -->
+<jsp:directive.include file="/inicio.jsp" />
 
 
-
-<%@ include file="/encabezados/footer.jsp"%>
+<jsp:directive.include file="/encabezados/pie.jsp" />

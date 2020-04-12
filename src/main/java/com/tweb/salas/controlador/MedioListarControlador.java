@@ -20,6 +20,9 @@ public class MedioListarControlador {
 	@Autowired
 	private MediosServicio mediosServicio;
 	
+	/**Variable para pasar el nombre de la pestaña*/
+	String nombre = "Medios técnicos";
+	
 	/**
 	 * Método GET que muestras las Salas del repositorio
 	 * @param model objeto de la Clase Model para añadir objetos creados
@@ -29,7 +32,7 @@ public class MedioListarControlador {
 	public String listarMedios (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("medios", mediosServicio.listaMedios());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "medios";
 	}
 	
@@ -42,7 +45,7 @@ public class MedioListarControlador {
 	public String listarMediosOrdenadosAsc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("medios", mediosServicio.listaMediosOrdena());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "medios";
 	}
 	
@@ -55,7 +58,7 @@ public class MedioListarControlador {
 	public String listarMediosOrdenadosDesc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("medios", mediosServicio.listaMediosOrdenaDesc());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "medios";
 	}
 	
@@ -68,7 +71,7 @@ public class MedioListarControlador {
 	public String listaMediosOrdenaId (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("medios", mediosServicio.listaMediosOrdenaId());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "medios";
 	}
 	
@@ -81,7 +84,7 @@ public class MedioListarControlador {
 	public String listaMediosOrdenaIdDesc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("medios", mediosServicio.listaMediosOrdenaIdDesc());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "medios";
 	}
 }

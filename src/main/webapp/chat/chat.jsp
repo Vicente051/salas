@@ -7,12 +7,17 @@
   <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
       <title>Spring Boot Chat Application</title>
-      <link rel="stylesheet" href="/css/main.css" />
+      <link rel="stylesheet" href="/css/chat.css" />
   </head>
   <body>
     <noscript>
       <h2>Sorry! Your browser doesn't support Javascript</h2>
     </noscript>
+    
+     <div id="evento-id">
+                    <input type="text" id="eventoid" placeholder="Escribe nombre usuario..." autocomplete="off" class="form-control" />
+                                        
+                </div>
 
     <div id="username-page">
         <div class="username-page-container">
@@ -20,7 +25,15 @@
             <form id="usernameForm" name="usernameForm">
                 <div class="form-group">
                     <input type="text" id="name" placeholder="Escribe nombre usuario..." autocomplete="off" class="form-control" />
+                                        
                 </div>
+                <div id="evento-id">
+                    <input type="number" id="eventoid" placeholder="Escribe nombre usuario..." autocomplete="off" class="form-control" />
+                                        
+                </div>
+                
+                
+                
                 <div class="form-group">
                     <button type="submit" class="accent username-submit">Empezar a chatear</button>
                 </div>
@@ -52,7 +65,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/js/chat.js"></script>
   </body>
 </html>
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tweb.salas.dominio.Medio_Tecnico;
 import com.tweb.salas.dominio.Sala;
 
 /**

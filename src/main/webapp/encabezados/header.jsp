@@ -1,6 +1,6 @@
 <!doctype html>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,9 +14,8 @@
 <html lang="es">
 <head>
 <!-- Required meta tags -->
-<meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
 
 <!-- Minified Bootstrap CSS -->
@@ -64,8 +63,16 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="/admin/horarios">Horarios</a>
 	      </li>
+	      
 	      <li class="nav-item">
-	        <a class="nav-link" href="/chat/chat.jsp">Chat</a>
+	        <a class="nav-link" href="/eventos">Chat</a>
+	      </li>
+	      
+	      <li class="nav-item">
+	        <a class="nav-link" href="/chat/chat">Chat</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/documentos/subirArchivo">Subir Archivos</a>
 	      </li>
 	    </ul>
 	    </div>

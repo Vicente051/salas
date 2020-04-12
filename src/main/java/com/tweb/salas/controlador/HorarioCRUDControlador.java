@@ -30,6 +30,9 @@ public class HorarioCRUDControlador {
 	@Autowired
 	private HorariosServicio horariosServicio;
 	
+	/**Variable para pasar el nombre de la pestaña*/
+	String nombre = "Horarios";
+	
 	/**
 	 * Método GET que añade o crea un Horario en el repositorio
 	 * @param model objeto de la Clase Model para añadir objetos creados
@@ -41,6 +44,7 @@ public class HorarioCRUDControlador {
 		model.addAttribute("horarios", horariosServicio.listaHorarios());
 		model.addAttribute("salas", salasServicio.listaSalas());
 		model.addAttribute("horario", new Horario());
+		model.addAttribute("nombrePestana", nombre);
 		return "agregarHorario";
 	}
 	
@@ -50,7 +54,7 @@ public class HorarioCRUDControlador {
 	 * @param model objeto de la Clase Model para añadir objetos creados
 	 * @return String que busca la página correspondiente
 	 */
-	@RequestMapping("/editarHorario/{id}")
+	@RequestMapping("/editarHorario{id}")
 	public String verHorario (@PathVariable("id") Integer id, Model model) {		
 		// Buscamos el Horario que coincida con el id, recibido como parámetro del JSP
 		Horario horario = horariosServicio.buscarHorario(id);
@@ -58,7 +62,7 @@ public class HorarioCRUDControlador {
 	    // Añadimos las listas y el objeto Horario para editarlo
 		model.addAttribute("horario", horario);
 		System.out.println("Horario: " + horario);
-	
+		model.addAttribute("nombrePestana", nombre);
 		return "/admin/agregarHorario";
 	}
 	
@@ -68,7 +72,7 @@ public class HorarioCRUDControlador {
 	 * @param model objeto de la Clase Model para añadir objetos creados
 	 * @return String que busca la página correspondiente
 	 */	
-	@RequestMapping("/borrarHorario/{id}")
+	@RequestMapping("/borrarHorario{id}")
 	public String borrarHorario (@PathVariable("id") Integer id, Model model) {
 		// Buscamos el objeto horario que coincida con el parámetro id introducido
 		// Borramos el objeto encontrado y mostramos el listado con el objeto borrado
@@ -78,6 +82,7 @@ public class HorarioCRUDControlador {
 		horariosServicio.borrarHorario(horario);		
 	
 		model.addAttribute("medios", horariosServicio.listaHorarios());
+		model.addAttribute("nombrePestana", nombre);
 		return "redirect:/admin/horarios";
 	}
 	
@@ -91,6 +96,7 @@ public class HorarioCRUDControlador {
 	@PostMapping("/guardarHorario")
 	public String guardarMedio (@Valid Horario horario, BindingResult bindingResult, Model model) {
 		
+		model.addAttribute("nombrePestana", nombre);
 		// Comprobamos si existe algún error de validación y redirigimos al formulario		
 		 if(bindingResult.hasErrors()) {
 			 System.out.println("Hora falla: " + horario.getHinicio() + " - " + horario.getHfinal());

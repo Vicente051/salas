@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -41,6 +42,11 @@ public class Sala implements Serializable {
     @Max(value = 150, message = "No puede exceder de 150 personas")
 	@NotNull
 	private Integer aforo;
+	
+	@OneToMany(mappedBy="sala")	
+	//@NotNull
+	private Set<Evento> lista_eventos = new HashSet<Evento>();
+	
 	
 	// Listado de medios técnicos con los que constará la sala. Tabla relación muchos a muchos
 	@ManyToMany
@@ -151,12 +157,28 @@ public class Sala implements Serializable {
     }
 	
 	/**
-	 * Método de obtención del listado de medios técnicos del objeto
-	 * @return el listado de medios técnicos
+	 * Método de obtención del listado de eventos del objeto
+	 * @return el listado de eventos del objeto
 	 */
 	public Set<Medio_Tecnico> deleteMedio(Medio_Tecnico medio) {
 		lista_medios_tecnicos.remove(medio);
 		return lista_medios_tecnicos;
+	}
+	
+	/**
+	 * Método de obtención del listado de eventos del objeto
+	 * @return el listado de eventos
+	 */
+	public Set<Evento> getLista_eventos() {
+		return lista_eventos;
+	}
+
+	/**
+	 * Método de obtención del listado de medios técnicos del objeto
+	 * @return el listado de medios técnicos
+	 */
+	public void setLista_eventos(Set<Evento> lista_eventos) {
+		this.lista_eventos = lista_eventos;
 	}
 
 	/**

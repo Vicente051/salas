@@ -20,6 +20,9 @@ public class HorarioListarControlador {
 	@Autowired
 	private HorariosServicio horariosServicio;
 	
+	/**Variable para pasar el nombre de la pestaña*/
+	String nombre = "Horarios";
+	
 	/**
 	 * Método GET que muestras los Horarios del repositorio
 	 * @param model objeto de la Clase Model para añadir objetos creados
@@ -29,7 +32,7 @@ public class HorarioListarControlador {
 	public String listarHorarios (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("horarios", horariosServicio.listaHorarios());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "horarios";
 	}
 	
@@ -42,7 +45,7 @@ public class HorarioListarControlador {
 	public String listaHorariosOrdenaId (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("horarios", horariosServicio.listaHorariosOrdenaId());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "horarios";
 	}
 	
@@ -55,7 +58,7 @@ public class HorarioListarControlador {
 	public String listaHorariosOrdenaIdDesc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("horarios", horariosServicio.listaHorariosOrdenaIdDesc());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "horarios";
 	}
 	
@@ -68,7 +71,7 @@ public class HorarioListarControlador {
 	public String listarHorariosOrdenadosHora_inicioAsc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("horarios", horariosServicio.listaHorariosOrdenaInicio());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "horarios";
 	}
 	
@@ -81,7 +84,7 @@ public class HorarioListarControlador {
 	public String listarHorariosOrdenadosDesc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("horarios", horariosServicio.listaHorariosOrdenaInicioDesc());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "horarios";
 	}
 	
@@ -94,7 +97,7 @@ public class HorarioListarControlador {
 	public String listarHorariosOrdenadosHoraFinalAsc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("horarios", horariosServicio.listaHorariosOrdenaFinal());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "horarios";
 	}
 	
@@ -107,7 +110,7 @@ public class HorarioListarControlador {
 	public String listarHorariosOrdenadosHoraFinalDesc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("horarios", horariosServicio.listaHorariosOrdenaFinalDesc());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "horarios";
 	}
 }

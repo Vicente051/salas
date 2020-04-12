@@ -1,104 +1,76 @@
-<%@ include file="/encabezados/header.jsp"%>
-<div class="container mt-4 periko_img">
-	<form:form>
-		<div class="row">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th scope="col">
-							<div class="btn-group">
-								<button type="button" class="btn btn-secondary dropdown-toggle"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">Id</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="/salas_idAsc">Ordenar de menor a mayor</a>
-									<a class="dropdown-item" href="/salas_idDesc">Ordenar de mayor a menor</a>
-								</div>
-							</div> 
-						</th>
-						<th scope="col">							
-							<div class="btn-group">
-								<button type="button" class="btn btn-secondary dropdown-toggle"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">Nombre</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="/salas_nombreAsc">Ordenar de la A-Z</a>
-									<a class="dropdown-item" href="/salas_nombreDesc">Ordenar de la Z-A</a>
-								</div>
-							</div> 
-						</th>
-						<th scope="col">							
-							<div class="btn-group">
-								<button type="button" class="btn btn-secondary dropdown-toggle"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">Aforo</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="/salas_aforoAsc">Ordenar de menor a mayor</a>
-									<a class="dropdown-item" href="/salas_aforoDesc">Ordenar de mayor a menor</a>
-								</div>
-							</div> 
-						</th>
-						<th scope="col">Medios Tecnicos</th>
-						<th scope="col">Horarios</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${salas}" var="sala">
-						<tr>							
-							<th scope="row">${sala.id}<input type="hidden" name="id" value="${sala.id}"/></th>
-							<td>${sala.nombre}</td>
-							<td>${sala.aforo}</td>
-							<td>
-								<div class="btn-group">
-									<button type="button" class="btn btn-info dropdown-toggle"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">Medios Técnicos</button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<c:forEach items="${sala.lista_medios_tecnicos}"
-											var="medio_tecnico">
-											<a class="dropdown-item">${medio_tecnico.nombre}</a>
-										</c:forEach>
-									</div>
-								</div>
-							</td>
-							<td>
-								<div class="btn-group">
-									<button type="button" class="btn btn-info dropdown-toggle"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">Horarios</button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<c:forEach items="${sala.lista_horarios}" var="horario">
-											<a class="dropdown-item">De ${horario.hinicio} a
-												${horario.hfinal}</a>
-										</c:forEach>
-									</div>
-								</div>
-							</td>								
-							<td>
-								<div class="text-center">
-									<a class="btn btn-warning" href="admin/editarSala/${sala.id}">Editar</a>
-								</div>
-							</td>
-							<td>
-								<div class="text-center">
+<jsp:directive.include file="/encabezados/cabecera.jsp" />
+<jsp:directive.include file="/encabezados/menu.jsp" />
 
-									<!-- Button Borrar modal -->
-									<a type="button" class="btn btn-primary" data-toggle="modal"
-										data-target="#borrarModal" href="/admin/borrarSala/${sala.id}">Borrar</a>
-								</div>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		<div class="text-center">
+<div class="container">
+
+	<form:form>
+		<div class="text-center pt-4" style="margin-bottom: 15px;">
 			<a href="/admin/agregarSala" class="btn btn-primary">Agregar Sala</a>
+			<a href="/admin/medios" class="btn btn-primary">Medios</a>
+			<a href="/admin/horarios" class="btn btn-primary">Horarios</a>
+			<div class="btn-group">
+				<button type="button" class="btn btn-secondary dropdown-toggle"
+					data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Id</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/salas_idAsc">Ordenar de menor a mayor</a>
+					<a class="dropdown-item" href="/salas_idDesc">Ordenar de mayor a menor</a>
+				</div>
+			</div> 
+									
+			<div class="btn-group">
+				<button type="button" class="btn btn-secondary dropdown-toggle"
+					data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Nombre</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/salas_nombreAsc">Ordenar de la A-Z</a>
+					<a class="dropdown-item" href="/salas_nombreDesc">Ordenar de la Z-A</a>
+				</div>
+			</div> 
+								
+			<div class="btn-group">
+				<button type="button" class="btn btn-secondary dropdown-toggle"
+					data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Aforo</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/salas_aforoAsc">Ordenar de menor a mayor</a>
+					<a class="dropdown-item" href="/salas_aforoDesc">Ordenar de mayor a menor</a>
+				</div>
+			</div>
 		</div>
-		
-		<!-- Borrar Modal -->
-		<%@ include file="/modales/borrarModal.jsp"%>
+		<div class="container">
+			<div class="row">
+				<c:forEach items="${salas}" var="sala">
+					<div class="card mb-4 mr-4 sombreado" style="width: 340px;">
+					  <div class="card-body">
+					    <h5 class="card-title text-center"><B>${sala.nombre}</B></h5>
+					    <img src="../img/sala.jpg" width="290" style="border-radius: 10px; margin-bottom: 10px;">
+					    <p class="card-text"><B>ID de la sala:</B> ${sala.id}<br/></p>
+					    <p class="card-text"><B>Capacidad de la sala:</B>${sala.aforo}<br/></p>
+					    
+					    <p class="card-text mb-1"><B>Medios de la sala:</B><br/></p>
+					    <c:forEach items="${sala.lista_medios_tecnicos}" var="medio_tecnico">
+					    	<p class="card-text" style="margin-left: 15px; font-size: 90%; line-height: 10px;">-${medio_tecnico.nombre}<br/></p>
+					    </c:forEach>
+					
+					
+				    	<p class="card-text mb-1"><B>Horarios de la sala:</B><br/></p>
+					    <c:forEach items="${sala.lista_horarios}" var="horario">
+					    	<p class="card-text" style="margin-left: 15px; font-size: 90%; line-height: 10px;">-De ${horario.hinicio} a ${horario.hfinal}<br/></p>
+					    </c:forEach>
+					    
+					    <div class="text-center pt-4">
+							<a class="btn btn-primary" href="admin/editarSala${sala.id}">Editar sala</a>
+							<a class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" href="/admin/borrarSala${sala.id}">Borrar</a>
+						</div>
+					  </div>
+					</div>
+				</c:forEach>
+			<!-- Borrar Modal -->
+			<%@ include file="/modales/borrarModal.jsp"%>
+			</div>
+		</div>
 	</form:form>
 </div>
 
-<%@ include file="/encabezados/footer.jsp"%>
+<jsp:directive.include file="/encabezados/pie.jsp" />

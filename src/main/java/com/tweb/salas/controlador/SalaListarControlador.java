@@ -18,20 +18,9 @@ public class SalaListarControlador {
 	@Autowired
 	private SalaServicio salasServicio;
 	
-	/**
-	 * Método GET que muestras las Salas del repositorio
-	 * @param model objeto de la Clase Model para añadir objetos creados
-	 * @return String que busca la página correspondiente
-	 */
-	@RequestMapping("/")
-	public String inicio (Model model) {
-		// Añadimos las listas al objeto Model
-		String ruta = "salas";
-		model.addAttribute("salas", salasServicio.listaSalas());
-		model.addAttribute("ruta", ruta);	
-		
-		return "index";
-	}
+	/**Variable para pasar el nombre de la pestaña*/
+	String nombre = "Salas";
+	
 	
 	/**
 	 * Método GET que muestras las Salas del repositorio
@@ -42,7 +31,7 @@ public class SalaListarControlador {
 	public String listarSalas (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("salas", salasServicio.listaSalas());		
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "salas";
 	}
 	
@@ -55,7 +44,7 @@ public class SalaListarControlador {
 	public String listarSalasOrdenadasAsc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("salas", salasServicio.listaSalasOrdena());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "salas";
 	}
 	
@@ -68,7 +57,7 @@ public class SalaListarControlador {
 	public String listarSalasOrdenadasDesc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("salas", salasServicio.listaSalasOrdenaDesc());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "salas";
 	}
 	
@@ -81,7 +70,7 @@ public class SalaListarControlador {
 	public String listaMediosOrdenaId (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("salas", salasServicio.listaSalasOrdenaId());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "salas";
 	}
 	
@@ -94,7 +83,7 @@ public class SalaListarControlador {
 	public String listaMediosOrdenaIdDesc (Model model) {
 		// Añadimos las listas al objeto Model
 		model.addAttribute("salas", salasServicio.listaSalasOrdenaIdDesc());
-		
+		model.addAttribute("nombrePestana", nombre);
 		return "salas";
 	}
 }
